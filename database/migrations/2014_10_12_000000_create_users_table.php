@@ -32,6 +32,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('avatar'); // avatar 列を削除
+        });
     }
 }
