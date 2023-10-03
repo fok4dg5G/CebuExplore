@@ -3,16 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,4 +19,9 @@ Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']
 Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+
+Route::get('/touristspot', [App\Http\Controllers\TouristSpotController::class, 'index'])->name('touristspot');
+Route::post('/touristspot/store', [App\Http\Controllers\TouristSpotController::class, 'store'])->name('tourist.store');
+Route::get('/tourist/{id}', [App\Http\Controllers\TouristSpotController::class, 'show'])->name('tourist.show');
+Route::post('/tourist/{postId}/comment', [App\Http\Controllers\TouristSpotController::class, 'storeComment'])->name('tourist.comments.store');
 
