@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+header{
+    height: 42px;
+}
+.head{
+    display: flex;
+    align-items: center;
+}
+.aa{
+    margin-right: 10px;
+}
+.head > img{
+    height: 40px;
+}
+/* -------------------------------------------------------------- */
+.content{
+    width: 100vw;
+    height: 261px;
+    background-image: url(../img/メイン背景画像.png);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.bb{
+    text-align: center;
+    font-family: graduate;
+    color: white;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    padding-left: 30px;
+    width: 100px;
+    height: 25px;
+    font-size: 1.1rem;
+    padding: 8px 5px;
+    border: 1px solid black;
+    display: inline-block;
+    background-color: white;
+    text-align: center;
+    border-radius: 30px;
+    text-decoration: none;
+    color: black;
+}
+
+.logout_btn{
+    margin-right: 70px;
+    margin-top: 50px;
+}
+/* ----------------------------------------------------------------------- */
+.middle{
+    height: 300px;
+}
+
+h5{
+    font-family: grape nuts;
+    font-size: 20px;
+}
+
+.p{
+    font-size: 10px;
+    text-align: center;
+}
+
+/* 上部 */
+.middle_up{
+    position: relative;
+}
+.art1{
+    position: absolute; 
+    bottom: 25px;
+    left: 10px;
+}
+
+/* 下部 */
+
+.middle_down{
+    position: relative;
+    float: right;
+}
+
+.art2{
+    position: absolute;
+    bottom: 25px;
+}
+
+.last_p{
+    margin-top: 150px;
+    margin-left: 50px;
+}
+
+/* ------------------------------------------------------------------------- */
+.low{
+    height: 225px;
+    background-image: url(../img/3104.png);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.btn_low{
+    display: inline-block;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    font-family: 'Abhaya Libre', serif;
+    height: 24px;
+    width: 102px;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 30%;
+    background-color: white;
+    margin-left: 50px;
+    margin-top: 35px;
+}
+/* ---------------------------------------------------------------------------- */
+footer{
+    height: 42px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.fot_pic{
+    height: 40px;
+}
+
+.btn_footer{
+    font-size: 10px;
+    text-decoration: none;
+    color: black;
+    border: 0.5px solid black;
+}
