@@ -1,0 +1,72 @@
+/* -------------------------------------------- */
+*{
+    padding: 0;
+    margin: 0;
+}
+/* ------------------------------------------------- */
+/* ヘッダーの編集 */
+header{
+    height: 42px;
+}
+.head{
+    display: flex;
+    align-items: center;
+}
+.aa{
+    margin-right: 10px;
+}
+.head > a> img{
+    height: 40px;
+}
+h1{
+    text-align: center;
+    color: white;
+    font-family: graduate;
+}
+/* ----------------------------------------------------------------------- */
+/* {{-- マイページの編集 --}} */
+
+.mypage-wrapper{
+    background-image: url('../img/メイン背景画像.png');
+    opacity: 0.6;
+    height: 261px;
+    border: solid black 1px;
+}
+
+.one{
+    display: flex;
+    flex-direction: column;
+}
+
+.self{
+    width: 80px;
+    height: 91px;
+}
+
+.self_containar{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.two input{
+    height: 18px;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.edit-btn{
+    text-align: center;
+}
+
+/* -------------------------------------------- */
+/* {{-- ポストリストの編集 --}} */
+.postlist-update{
+    border: solid black 1px;
+}
+/* -------------------------------------------- */
+/* {{-- ブックマークの編集 --}} */
+.card{
+    border: solid black 1px;
+}
