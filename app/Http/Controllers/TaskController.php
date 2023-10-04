@@ -88,7 +88,7 @@ class TaskController extends Controller
             $task->save();
     
             // 成功時のリダイレクトなどの処理を追加
-            return redirect()->route('tourist-spot')->with('success', '投稿が作成されました');
+            return redirect()->route('tourist-spot')->with('success', 'Post created');
      }  
     }
 }
