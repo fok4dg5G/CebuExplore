@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function touristSpot()
+    {
+        return view('post.tourist-spot');
+    }
+
 }
