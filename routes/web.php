@@ -9,7 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Task;
-use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->nam
 Route::get('/tourist-spot/create', [App\Http\Controllers\TaskController::class, 'create'])->name('posts.create');
 //新規投稿保存
 Route::post('/store', [App\Http\Controllers\TaskController::class, 'store'])->name('store');
-=======
+
 Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
 
 Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
