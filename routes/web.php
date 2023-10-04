@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -23,7 +24,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 
 Auth::routes();
 
@@ -37,3 +39,9 @@ Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->nam
 Route::get('/tourist-spot/create', [App\Http\Controllers\TaskController::class, 'create'])->name('posts.create');
 //新規投稿保存
 Route::post('/store', [App\Http\Controllers\TaskController::class, 'store'])->name('store');
+=======
+Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
+
+Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
+
+Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');

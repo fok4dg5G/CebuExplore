@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/* ------------------------------------------------------------- */
+header{
+    height: 42px;
+}
+.head{
+    display: flex;
+    align-items: center;
+}
+.aa{
+    margin-right: 10px;
+}
+.head > img{
+    height: 40px;
+}
+/* --------------------------------------------------------------- */
+footer{
+    height: 42px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.fot_pic{
+    height: 40px;
+}
+
+.btn_footer{
+    font-size: 10px;
+    text-decoration: none;
+    color: black;
+    border: 0.5px solid black;
+}
