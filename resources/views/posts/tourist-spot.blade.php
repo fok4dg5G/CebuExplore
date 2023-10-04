@@ -18,7 +18,11 @@
 
     <div class="posts-box">
         <label for="title" class="form-label"> {{ $task->title }}</label><br>
-        <div id="imageDisplay2">{{ $task->image_at }}</div>
+        @if($task->image_at)
+        <img src="{{ asset($task->image_at) }}" alt="Image" width="150px" height="100px">
+        @endif
+
+        {{-- <div id="imageDisplay2">{{ $task->image_at }}</div> --}}
         <div  class="functions">
             <label for="content" class="form-label">{{ $task->contents }}</label><br><br><br>
             
@@ -31,7 +35,7 @@
         </div> 
         </div> 
         <div class="datecreate">
-            <th>date created: <br>
+            <th >date created: <br>
                 {{ $task->created_at }}</th><br>
         </div>
         
