@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 
@@ -21,6 +22,7 @@ use App\Models\Task;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,4 +51,7 @@ Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update
 // Route::get('tasks/{task_id}/likes',[App\Http\Controllers\GoodController::class, 'store'])->name('tourist-spot.store');
 //いいねを取り消し
 
-// Route::get('goods/{good_id}',[App\Http\Controllers\GoodController::class, 'store'])->name('tourist-spot.store');
+Route::get('/touristspot', [App\Http\Controllers\TouristSpotController::class, 'index'])->name('touristspot');
+Route::post('/touristspot/store', [App\Http\Controllers\TouristSpotController::class, 'store'])->name('tourist.store');
+Route::get('/tourist/{id}', [App\Http\Controllers\TouristSpotController::class, 'show'])->name('tourist.show');
+Route::post('/tourist/{postId}/comment', [App\Http\Controllers\TouristSpotController::class, 'storeComment'])->name('tourist.comments.store');
