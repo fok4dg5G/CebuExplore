@@ -39,13 +39,6 @@ class TaskController extends Controller
         // バリデーション実行
         // $validatedData = $request->validate($rules);
     
-        // バリデーションが成功したら、Taskモデルを使用してデータベースに投稿を保存
-        
-        // Task::create([
-        //     'user_id' => auth()->user()->id, // ログインユーザーのIDを取得する例
-        //     'title' => $request->input('title'),
-        //     'content' => $request->input('content'),
-        // ]);
         
         $task = new Task;
         $task->title = $request->input('title');

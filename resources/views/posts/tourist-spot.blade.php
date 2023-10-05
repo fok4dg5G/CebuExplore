@@ -17,14 +17,14 @@
 @foreach ($tasks as $task)
 
     <div class="posts-box">
-        <label for="title" class="form-label"> {{ $task->title }}</label><br>
+        <label for="title" class="form-label">Title : {{ $task->title }}</label><br>
         @if($task->image_at)
         <img src="{{ asset($task->image_at) }}" alt="Image" width="150px" height="100px">
         @endif
 
         {{-- <div id="imageDisplay2">{{ $task->image_at }}</div> --}}
         <div  class="functions">
-            <label for="content" class="form-label">{{ $task->contents }}</label><br><br><br>
+            <label for="content" class="form-label">Content : <br>{{ $task->contents }}</label><br><br><br>
             
             <div class="function-box">
                 <img src="images/delete.png" alt="" width="12px" height="15px">
@@ -40,7 +40,7 @@
         </div>
         
         <thead>
-        <label for="comment" class="form-label">Comment</label><br>
+        <label for="comment" class="form-label">Comment :</label><br>
         <img src="images/jolli.jpg" class="img-thumbnail" alt="...">
         </thead>
         

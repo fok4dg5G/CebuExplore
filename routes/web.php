@@ -38,10 +38,15 @@ Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->nam
 // 新しい投稿の作成
 Route::get('/tourist-spot/create', [App\Http\Controllers\TaskController::class, 'create'])->name('posts.create');
 //新規投稿保存
-Route::post('/store', [App\Http\Controllers\TaskController::class, 'store'])->name('store');
+Route::post('tourist-spot/store', [App\Http\Controllers\TaskController::class, 'store'])->name('tourist-spot.store');
 
 Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
 
 Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+//いいねを作成
+// Route::get('tasks/{task_id}/likes',[App\Http\Controllers\GoodController::class, 'store'])->name('tourist-spot.store');
+//いいねを取り消し
+
+// Route::get('goods/{good_id}',[App\Http\Controllers\GoodController::class, 'store'])->name('tourist-spot.store');
