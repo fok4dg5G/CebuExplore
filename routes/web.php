@@ -4,6 +4,25 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+
+use App\Http\Controllers;
+use App\Models\Category;
+use App\Models\Task;
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,14 +33,25 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/tourist-spot', [App\Http\Controllers\TaskController::class, 'touristSpot'])->name('tourist-spot');
+
+Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('tasks.index');
+
+// 新しい投稿の作成
+Route::get('/tourist-spot/create', [App\Http\Controllers\TaskController::class, 'create'])->name('posts.create');
+//新規投稿保存
+Route::post('tourist-spot/store', [App\Http\Controllers\TaskController::class, 'store'])->name('tourist-spot.store');
+
 Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
 
 Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+//いいねを作成
+// Route::get('tasks/{task_id}/likes',[App\Http\Controllers\GoodController::class, 'store'])->name('tourist-spot.store');
+//いいねを取り消し
 
 Route::get('/touristspot', [App\Http\Controllers\TouristSpotController::class, 'index'])->name('touristspot');
 Route::post('/touristspot/store', [App\Http\Controllers\TouristSpotController::class, 'store'])->name('tourist.store');
 Route::get('/tourist/{id}', [App\Http\Controllers\TouristSpotController::class, 'show'])->name('tourist.show');
 Route::post('/tourist/{postId}/comment', [App\Http\Controllers\TouristSpotController::class, 'storeComment'])->name('tourist.comments.store');
-
