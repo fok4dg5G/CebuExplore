@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CebuExplore</title>
-    <link href="{{ asset('css/tourist-spot.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/CebuExplore.css') }}">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -13,15 +14,10 @@
 
 </head>
 <body>
-    <header style="height: 42px">
-        <div style="display: flex; align-items: center;">
-            <a href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}" style="margin-right: 10px; height: 40px;
-            }"></a>
-            <form action="">
-                @csrf
-                <input type="text" class="search aa-b">
-            </form>
-            <a href=""><i class="fa-solid fa-magnifying-glass header-img aa-b" ></i></a>
+    <header>
+        <div class="head-cebu">
+            <a href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}" class="aa-b"></a>
+            <h5 >CebuExplore</h5>
             @if (Auth::check())
                 <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}">
                     <img src="{{ asset('storage/images/' . $user->avatar) }}" alt="" class="self">
@@ -32,13 +28,13 @@
         </div>
     </header>
     @yield('content')
-    <footer style="height: 42px; display: flex;justify-content: space-around; align-items: flex-start;">
+    <footer>
         <div class="footer">
-            <img src="{{ asset('img/logo.png') }}" style="height: 40px;">
-            <a href="#" style="font-size: 10px; text-decoration: none; color: black; border: 0.5px solid black;">#TouristSpost</a>
-            <a href="#" style="font-size: 10px; text-decoration: none; color: black; border: 0.5px solid black;   ">#Hotel</a>
-            <a href="#" style="font-size: 10px; text-decoration: none; color: black; border: 0.5px solid black;    ">#Food</a>
-            <a href="#" style="font-size: 10px; text-decoration: none; color: black; border: 0.5px solid black;    ">#Transportation</a>
+            <img src="{{ asset('img/logo.png') }}" class="fot_pic">
+            <a href="#" class="btn_footer">#TouristSpost</a>
+            <a href="#" class="btn_footer">#Hotel</a>
+            <a href="#" class="btn_footer">#Food</a>
+            <a href="#" class="btn_footer">#Transportation</a>
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

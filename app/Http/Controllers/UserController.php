@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Task
+use App\Models\Task;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         // dd($id);
         $user = User::find($id);
-
+        // dd($user);
         $bookmarks = User::find($id)->bookmarks;
         // dd($bookmarks);
 
@@ -48,6 +48,7 @@ class UserController extends Controller
         // dd($id);
         $user = User::find($id);
         // dd($user);
+
         $tasks = Task::all();
         // dd($tasks);
         return view('mypage_edit', compact('user','tasks'));
