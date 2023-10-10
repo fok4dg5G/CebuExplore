@@ -15,14 +15,10 @@
     <header>
         <div class="head-cebu">
             <a href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}" class="aa-b"></a>
-            <form action="">
-                @csrf
-                <input type="text" class="search aa-b">
-            </form>
-            <a href=""><i class="fa-solid fa-magnifying-glass header-img aa-b" ></i></a>
+            <h3>CebuExplore</h3>
             @if (Auth::check())
                 <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}">
-                    <img src="{{ asset('storage/images/' . $user->avatar) }}" alt="" class="self">
+                    <i class="fa-regular fa-user header-img aa-b"></i>
                 </a>
             @else
             <!-- ログインしていないユーザーに対する代替コンテンツをここに追加 -->

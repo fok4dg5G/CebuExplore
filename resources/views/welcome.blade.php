@@ -1,4 +1,4 @@
-@extends('layouts.CebuExplore')
+@extends('layouts.CebuExplore1')
 @section('content')
 {{------------------------------------------------------------------------- --}}
 <div class="content">
@@ -44,7 +44,7 @@
 </div>
 {{-- ------------------------------------------------------------------------ --}}
 <div class="low"> 
-    <a href="#" class="btn_low">#TouristSpost</a>
+    <a href="{{ route('tourist-spot') }}" class="btn_low">#TouristSpost</a>
     <a href="#" class="btn_low">#Hotel</a>
     <a href="#" class="btn_low">#Food</a>
     <a href="#" class="btn_low">#Transportation</a>

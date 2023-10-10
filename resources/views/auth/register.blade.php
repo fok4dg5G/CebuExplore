@@ -29,8 +29,7 @@
                             <label for="avatar" class="col-md-4 col-form-label text-md-end">{{ __('Profile Picture') }}</label>
 
                             <div class="col-md-6">
-                                <input id="avatar" type="file" class="
-                                @error('avatar') is-invalid 
+                                <input id="avatar" type="file" class="@error('avatar') is-invalid
                                 @enderror" name="avatar" >
 
                                 @error('avatar')
