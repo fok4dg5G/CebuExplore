@@ -25,6 +25,7 @@ header{
     flex-direction: column;
     justify-content: center;
 }
+
 .bb{
     text-align: center;
     font-family: graduate;
@@ -57,44 +58,8 @@ header{
 }
 /* ----------------------------------------------------------------------- */
 .middle{
-    height: 300px;
-}
-
-h5{
-    font-family: grape nuts;
-    font-size: 20px;
-}
-
-.p{
-    font-size: 10px;
-    text-align: center;
-}
-
-/* 上部 */
-.middle_up{
-    position: relative;
-}
-.art1{
-    position: absolute; 
-    bottom: 25px;
-    left: 10px;
-}
-
-/* 下部 */
-
-.middle_down{
-    position: relative;
-    float: right;
-}
-
-.art2{
-    position: absolute;
-    bottom: 25px;
-}
-
-.last_p{
-    margin-top: 150px;
-    margin-left: 50px;
+    height: 290px;
+    background-image: url(../images/背景.png);
 }
 
 /* ------------------------------------------------------------------------- */

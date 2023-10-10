@@ -28,19 +28,7 @@
 </div>
 {{-- ---------------------------------------------------------------------------- --}}
 <div class="middle">
-    <div class="middle_up">
-        <h5 >About Cebu Explore</h5>
-        <img src="{{ asset('img/濃い青.png') }}" alt="">
-        <p class="art1 p">Cebu Explore is  a new SNS site. <br>You can share the latest information 
-        <br>and reviews about Cebu. <br>You might find the information you want here...</p>
-    </div>
-    <div class="middle_down">
-        <h5>Cebu News</h5>
-        <img src="{{ asset('img/薄い青.png') }}" alt="">
-        <p class="art2 p">Cebu Explore is  a new SNS site. <br>You can share the latest information 
-        <br>and reviews about Cebu. <br>You might find the information you want here...</p>
-    </div>
-    <h5 class="last_p">What do you want to know about ?</h5>
+
 </div>
 {{-- ------------------------------------------------------------------------ --}}
 <div class="low"> 

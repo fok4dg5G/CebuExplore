@@ -9,7 +9,7 @@ use App\Models\Good;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
-use Symfony\Component\HttpKernel\Event\RequestEvent
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class TaskController extends Controller
 
@@ -95,7 +95,8 @@ class TaskController extends Controller
          
      }   
     }
-        public function ajaxlike(Request $request)
+    
+    public function ajaxlike(Request $request)
     {
         // 投稿にいいねを追加する
         $tasks = Task::find($request->id);

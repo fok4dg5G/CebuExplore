@@ -55,6 +55,8 @@ Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, '
 // ユーザー情報を更新するためのルート
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
+Route::post('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+
 Route::post('ajaxlike', 'GoodController@ajaxlike')->name('good.ajaxlike');
 
 Route::post('/task/like', [App\Http\Controllers\GoodController::class, 'store']);

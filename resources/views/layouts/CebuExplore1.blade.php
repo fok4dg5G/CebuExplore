@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/CebuExplore.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcom.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/index.css') }}"> --}}
     <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
 </head>
 <body>
