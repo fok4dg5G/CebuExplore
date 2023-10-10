@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
 use App\Models\Bookmark;
+use App\Models\User;
 
 class BookmarkController extends Controller
 {
-     
 
     public function index()
     {

@@ -44,7 +44,9 @@ Route::get('/tourist-spot/create', [App\Http\Controllers\TaskController::class, 
 // //新規投稿保存
 Route::post('tourist-spot/store', [App\Http\Controllers\TaskController::class, 'store'])->name('tourist-spot.store');
 
-// -------------------------------------------------------------------------------------------------------------------------------
+//新規投稿削除
+
+Route::delete('/tourist-spot/{id}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('tasks.destroy');
 
 
 Route::get('/profile/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');

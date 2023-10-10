@@ -20,4 +20,6 @@ class Bookmark extends Model
     {
         return $this->belongsTo('App\Models\Task');
     }
+    
+
 }

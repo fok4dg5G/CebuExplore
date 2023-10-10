@@ -82,21 +82,38 @@ h1{
 
 .self_post{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
-    margin-top: 20px;
+    height: fit-content;
+    margin: 20px 20px;
+    padding: 20px;
+    background-color: white;
+
 }
 
-.three{
+.moji{
+    text-align: left;
+}
+
+.btn{
+    width: 5px !important;
+    height: 10px;
+    border: none !important;
+   
+}
+
+/* .three{
     display: flex;
     flex-direction: column;
+    margin-right:10px;
+    margin-top: 20px;
 }
 
 .four{
     height: 18px;
     width: 150px;
     margin-bottom: 20px;
-}
+} */
 
 
 
@@ -111,7 +128,7 @@ h1{
 }
 
 .card{
-    border: solid black 1px;
+    background-color:  white;
     
 }
 .container > .card {

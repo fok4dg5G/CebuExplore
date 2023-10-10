@@ -34,5 +34,6 @@
             <a href="#" class="btn_footer">#Transportation</a>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 </html>
