@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.CebuExplore1')
 @section('content')
     <h1>TouristSpot Posts</h1>
 

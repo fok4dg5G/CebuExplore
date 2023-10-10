@@ -9,9 +9,11 @@ header{
 .head-cebu{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .aa-b{
-    margin-right: 10px;
+    margin-left: 40px;
+
 }
 .head-cebu > a >img{
     height: 40px;
