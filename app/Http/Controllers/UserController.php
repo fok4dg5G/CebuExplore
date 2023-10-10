@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Task;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Task
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         // dd($id);
         $user = User::find($id);
+
         $bookmarks = User::find($id)->bookmarks;
         // dd($bookmarks);
 
@@ -36,36 +37,39 @@ class UserController extends Controller
 
         // dd($user);
         return view('mypage')->with('user', $user)->with('bookmarks', $bookmarked_post);
+
+        
+        
     }
+    
 
     public function edit($id)
     {
         // dd($id);
         $user = User::find($id);
         // dd($user);
-        return view('mypage_edit', compact('user'));
+        $tasks = Task::all();
+        // dd($tasks);
+        return view('mypage_edit', compact('user','tasks'));
     }
 
-    public function update(Request $request,$id)
+
+    public function update(Request $request, $id)
     {
+        // dd($id);
+        // dd($request);
         $user = User::find($id);
+        // dd($user);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        // パスワードの更新は別途処理が必要ですが、この例ではそのまま代入しています。
+        $user->password = $request->password;
 
-        $user -> name = $request -> name;
-        $user -> email = $request -> email;
-        $user -> password = $request -> password;
+        $user->save();
 
-        $user -> save();
-        return view('mypage',compact('user'));
+        $tasks = Task::all();
+        // dd($tasks);
+        return view('mypage', compact('user', 'tasks'));
     }
 
-
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //         'avatar' => $data['avatar']->store('avatars', 'public'), // アバター画像の保存
-    //     ]);
-    // }
 }

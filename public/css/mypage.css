@@ -62,9 +62,44 @@ h1{
 
 /* -------------------------------------------- */
 /* {{-- ポストリストの編集 --}} */
+.form{
+    border-top: 0.1px solid black;
+    height: 200px;
+}
+
 .postlist-update{
     border: solid black 1px;
 }
+
+.Task_Bookmark{
+    background-color: #A8DBFE;
+}
+
+.posts-func{
+    display: flex;
+  
+}
+
+.self_post{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.three{
+    display: flex;
+    flex-direction: column;
+}
+
+.four{
+    height: 18px;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+
+
 /* -------------------------------------------- */
 /* {{-- ブックマークの編集 --}} */
 .container {

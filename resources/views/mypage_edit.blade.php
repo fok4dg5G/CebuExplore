@@ -1,4 +1,4 @@
-@extends('layouts.CebuExplore')
+@extends('layouts.CebuExplore1')
 @section('content')
         {{-- ----------------------------------------------------------------------------------------------- --}}
         {{-- マイページの編集 --}}
@@ -10,7 +10,7 @@
                     <h1>MYPAGE</h1>
                     <div class="self_containar">
                         <div class="one">
-                            <img src="{{ asset('storage/img/' . $user->avatar) }}" alt="" class="self">
+                            <img src="{{ asset('storage/images/' . $user->avatar) }}" alt="" class="self">
                             <label for="image">Image selection</label>
                         </div>
                         {{-- <input type="text" value="{{ $user->avatar }}" name="avatar" > --}}
