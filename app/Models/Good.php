@@ -8,13 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Good extends Model
 {
     use HasFactory;
-    public function user()
+
+
+      protected $fillable = [
+        'isLike',
+        'task_id',
+        'user_id',
+    ];
+
+    public function touristSpot()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(TouristSpot::class);
     }
 
-    public function task()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Task');
+        return $this->belongsTo(User::class);
     }
 }

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -17,8 +20,22 @@ class UserController extends Controller
     {
         // dd($id);
         $user = User::find($id);
+        $bookmarks = User::find($id)->bookmarks;
+        // dd($bookmarks);
+
+        $bookmarked_post = [];
+
+        foreach($bookmarks as $bookmark ) {
+            $post_to_push = Task::where('id', $bookmark->task_id)->first();
+            // dd($post_to_push);
+            if($post_to_push) {
+                // array_push($bookmarked_post, $post_to_push);
+                $bookmarked_post[] = $post_to_push;
+            }
+        }
+
         // dd($user);
-        return view('mypage', compact('user'));
+        return view('mypage')->with('user', $user)->with('bookmarks', $bookmarked_post);
     }
 
     public function edit($id)
