@@ -40,11 +40,14 @@ Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->nam
 
 // 新しい投稿の作成
 Route::get('/tourist-spot/create', [App\Http\Controllers\TaskController::class, 'create'])->name('posts.create');
-//新規投稿保存
-Route::post('/tourist-spot/store', [App\Http\Controllers\TaskController::class, 'store'])->name('tourist-spot.store');
+
+// //新規投稿保存
+Route::post('tourist-spot/store', [App\Http\Controllers\TaskController::class, 'store'])->name('tourist-spot.store');
+
 // -------------------------------------------------------------------------------------------------------------------------------
 
-Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
+
+Route::get('/profile/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
 
 // ユーザー情報の編集フォームを表示するためのルート
 Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
@@ -52,9 +55,15 @@ Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, '
 // ユーザー情報を更新するためのルート
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
-//いいねを作成
-// Route::get('tasks/{task_id}/likes',[App\Http\Controllers\GoodController::class, 'store'])->name('tourist-spot.store');
-//いいねを取り消し
+Route::post('ajaxlike', 'GoodController@ajaxlike')->name('good.ajaxlike');
+
+Route::post('/task/like', [App\Http\Controllers\GoodController::class, 'store']);
+// ブックマークを追加するルート
+Route::post('/bookmarks/add/{task_id}', [App\Http\Controllers\BookmarkController::class, 'addBookmark'])->name('bookmarks.add');
+// ブックマークを削除するルート
+Route::delete('/bookmarks/remove/{task_id}', [App\Http\Controllers\BookmarkController::class, 'removeBookmark'])->name('bookmarks.remove');
+// ブックマーク一覧を表示するルート
+Route::get('/profile/{id}', [App\Http\Controllers\BookmarkController::class, 'index'])->name('mypage.index');
 
 // --------------------------------------------------------------------------------
 Route::post('/post_list/edit/{id}', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
@@ -62,5 +71,4 @@ Route::post('/post_list/edit/{id}', [App\Http\Controllers\TaskController::class,
 Route::put('/post_list/{id}', [App\Http\Controllers\TaskController::class, 'update'])->name('task.update');
 
 Route::delete('/post_list/{id}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('task.destroy');
-
 

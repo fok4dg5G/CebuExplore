@@ -45,10 +45,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function bookmarks()
-    {
-        return $this->hasMany('App\Models\Bookmark');
-    }
 
     public function tasks()
     {
@@ -64,6 +60,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Good');
     }
-    
-    
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+   
 }
