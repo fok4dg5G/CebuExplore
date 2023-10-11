@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
 
+.header{
+    position: absolute;
+    top: 0;
+    left: 0; /* ヘッダーを左端に固定する場合 */
+    right: 0; /* ヘッダーを右端に固定する場合 */
+    background-color: white; /* ヘッダーの背景色 */
+    color: #fff; /* ヘッダーのテキスト色 */
+    padding: 10px; /* 適切なパディングを設定 */
+    height: 42px;
+   
+
+}
+
 .container {
     padding-left: 0!important;
     padding-right: 0!important;
     position: relative;
+
 }
 .margin20{
     margin-bottom: 20px;
@@ -24,6 +38,8 @@
     justify-content: center;
 }
 .header-title2 {
+    margin-top: 60px;
+    margin-bottom: 30px;
     font-family: 'Grape Nuts', cursive;
     font-size: 36px;
     height: 41px;
@@ -37,9 +53,17 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-bottom: 70px;
+   
 
 }
+.posts-box{
+    flex: 1; /* 要素が均等な幅を持つようにフレックスプロパティを設定 */
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
 #imageDisplay2 {
     height: 92px;
     width: 144px;
@@ -69,6 +93,8 @@
 }
 
 .create-post-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
     height: 220px;
     width: 100%;
     background: url('../images/ami.png');
@@ -81,6 +107,7 @@
 .form-label {
     margin-bottom: 5px!important;
     position:relative!important;
+    text-align: left!important;
 }
 .parent {
     position: relative;
@@ -102,23 +129,21 @@
 .img-thumbnail{
     height: 40px;
     width: 40px;
-
-
-
 }
 
 .functions{
     display: flex;
     justify-content: flex-end;
-    
+    gap:8px ;
+    margin-top: 10px;
 }
 
 
 .function-box{
-   text-align: right;
-   justify-content: space-between;
-   align-items: center;
+   
    display: flex;
+   align-items: center;
+   
    
 }
 
@@ -131,6 +156,7 @@
 .yahho{
     display: flex;
     justify-content: space-between;
+
 }
 
 .datecreate{
@@ -141,6 +167,7 @@
 
     width: 170px;
     height: 120px;
+    text-align: left;
 
 }
 
@@ -154,6 +181,7 @@
     justify-content: center;
 }
 .pagination-links{
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 }
@@ -162,3 +190,28 @@
     display: none;
 }
 
+.deletebtn {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer{
+  
+    display: flex;
+    justify-content: space-around; 
+    align-items: flex-start;
+}
+   
+
+.footer{
+  
+  
+    bottom: 0;
+    left: 0; /* フッターを左端に固定する場合 */
+    right: 0; /* フッターを右端に固定する場合 */
+    background-color: white; /* フッターの背景色 */
+    color: #fff; /* フッターのテキスト色 */
+   
+}

@@ -25,4 +25,10 @@ class Good extends Model
     {
         return $this->belongsTo(User::class);
     }
+    // Goods モデル内
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
+
 }

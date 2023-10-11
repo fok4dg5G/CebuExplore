@@ -10,11 +10,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <header style="height: 42px">
-        <div style="display: flex; align-items: center;">
+    <header class="header">
+        <div style="display: flex; align-items: center; border solid 1px black">
             <a href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}" style="margin-right: 10px; height: 40px;
             }"></a>
             <form action="">
@@ -24,7 +24,7 @@
             <a href=""><i class="fa-solid fa-magnifying-glass header-img aa-b" ></i></a>
             @if (Auth::check())
                 <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}">
-                    <img src="{{ asset('storage/images/' . $user->avatar) }}" alt="" class="self">
+                    <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="" class="self" width="50px" height="50px">
                 </a>
             @else
             <!-- ログインしていないユーザーに対する代替コンテンツをここに追加 -->
@@ -32,7 +32,7 @@
         </div>
     </header>
     @yield('content')
-    <footer style="height: 42px; display: flex;justify-content: space-around; align-items: flex-start;">
+    <footer class="footer">
         <div class="footer">
             <img src="{{ asset('img/logo.png') }}" style="height: 40px;">
             <a href="#" style="font-size: 10px; text-decoration: none; color: black; border: 0.5px solid black;">#TouristSpost</a>
@@ -41,6 +41,7 @@
             <a href="#" style="font-size: 10px; text-decoration: none; color: black; border: 0.5px solid black;    ">#Transportation</a>
         </div>
     </footer>
+    @stack('js')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

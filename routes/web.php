@@ -35,6 +35,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // --------------------------------------------------------------------------------------------------------------------------
 
 Route::get('/tourist-spot', [App\Http\Controllers\TaskController::class, 'touristSpot'])->name('tourist-spot');
+Route::get('/hotel', [App\Http\Controllers\TaskController::class, 'hotel'])->name('hotel');
+Route::get('/food', [App\Http\Controllers\TaskController::class, 'food'])->name('food');
+Route::get('/transportation', [App\Http\Controllers\TaskController::class, 'transportation'])->name('transportation');
+
 
 Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('tasks.index');
 
@@ -43,10 +47,16 @@ Route::get('/tourist-spot/create', [App\Http\Controllers\TaskController::class, 
 
 // //新規投稿保存
 Route::post('tourist-spot/store', [App\Http\Controllers\TaskController::class, 'store'])->name('tourist-spot.store');
+Route::post('hotel/store', [App\Http\Controllers\TaskController::class, 'storehotel'])->name('hotel.store');
+Route::post('food/store', [App\Http\Controllers\TaskController::class, 'storeFood'])->name('food.store');
+Route::post('transportation/store', [App\Http\Controllers\TaskController::class, 'storeTransportation'])->name('transportation.store');
 
 //新規投稿削除
 
 Route::delete('/tourist-spot/{id}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('tasks.destroy');
+Route::delete('/hotel/{id}', [App\Http\Controllers\TaskController::class, 'destroyHotel'])->name('hotel.destroy');
+Route::delete('/food/{id}', [App\Http\Controllers\TaskController::class, 'destroyFood'])->name('food.destroy');
+Route::delete('/transportation/{id}', [App\Http\Controllers\TaskController::class, 'destroyTransportation'])->name('transportation.destroy');
 
 
 Route::get('/profile/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
@@ -57,7 +67,7 @@ Route::post('/profile/{id}/edit', [App\Http\Controllers\UserController::class, '
 // ユーザー情報を更新するためのルート
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
-Route::post('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+// Route::post('/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
 Route::post('ajaxlike', 'GoodController@ajaxlike')->name('good.ajaxlike');
 

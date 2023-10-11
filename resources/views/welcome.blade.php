@@ -33,9 +33,9 @@
 {{-- ------------------------------------------------------------------------ --}}
 <div class="low"> 
     <a href="{{ route('tourist-spot') }}" class="btn_low">#TouristSpost</a>
-    <a href="#" class="btn_low">#Hotel</a>
-    <a href="#" class="btn_low">#Food</a>
-    <a href="#" class="btn_low">#Transportation</a>
+    <a href="{{ route('hotel') }}" class="btn_low">#Hotel</a>
+    <a href="{{ route('food') }}" class="btn_low">#Food</a>
+    <a href="{{ route('transportation') }}" class="btn_low">#Transportation</a>
 </div>
 {{-- ------------------------------------------------------------------------------------- --}}
 @endsection
