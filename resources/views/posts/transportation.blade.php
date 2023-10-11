@@ -8,7 +8,7 @@
 
     <div class="container custom">
         <div class="posts-section">
-    <h3 class="header-title2">Tourist Spot</h3>
+    <h3 class="header-title2">#Transportation</h3>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -48,7 +48,7 @@
                 @endif
                     {{-- <td> --}}
                         @if($task->user_id == Auth::id())
-                            <form action="{{ route('task.destroy',['id'=>$task->id]) }}" method="POST">
+                            <form action="{{ route('transportation.destroy',['id'=>$task->id]) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <input type="hidden" name="task_id" value="{{ $task->id }}">
@@ -72,7 +72,7 @@
             <div class="yahho">
                 <input type="text" class="comment-box" id="comment">
                 <div>
-                    <img src="images/plain.png" alt="" width="20px" height="20px" >
+                    <img src="images/plain.png" alt="" width="20px" height="20px">
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
         <div class="create-post-section">
             <h3 class="header-title">New post</h3>
             <div class="create-post">
-                <form class="d-flex justify-content-evenly" method="POST" action="{{ route('tourist-spot.store') }}" enctype="multipart/form-data">
+                <form class="d-flex justify-content-evenly" method="POST" action="{{ route('transportation.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="parent">
                         <div class="mb-3">
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="parent">
-                        <input type="number" name="category_id" value="1" hidden>
+                        <input type="number" name="category_id" value="4" hidden>
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control title" id="title" name="title">
                         <label for="content" class="form-label">Content</label><br>
@@ -183,7 +183,7 @@
         // ユーザーが確認したら削除リクエストを送信
         console.log(taskId)
         $.ajax({
-            url: '/tourist-spot/' + taskId, // タスクのIDに応じてURLを設定
+            url: '/transportation/' + taskId, // タスクのIDに応じてURLを設定
             type: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),

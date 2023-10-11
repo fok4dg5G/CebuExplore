@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Bookmark;
 use App\Models\Task; 
 use App\Models\Good; 
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +18,41 @@ class TaskController extends Controller
     public function touristSpot()
     {
         // タスクのデータを取得（適切な方法でデータを取得する必要があります）
-        $tasks = Task::orderBy('id', 'DESC')->paginate(8);  // 仮の例です
+        $tasks = Task::where('category_id', 1)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
         $goods = Good::all();
+        $bookmarks = Bookmark::all();
         // ビューにデータを渡す
-        return view('posts.tourist-spot')->with('tasks', $tasks)->with('goods', $goods)->render();
+        return view('posts.tourist-spot')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
+    }
+
+    public function hotel()
+    {
+        // タスクのデータを取得（適切な方法でデータを取得する必要があります）
+        $tasks = Task::where('category_id', 2)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
+        $goods = Good::all();
+        $bookmarks = Bookmark::all();
+        // ビューにデータを渡す
+        return view('posts.hotel')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
+    }
+
+    public function food()
+    {
+        // タスクのデータを取得（適切な方法でデータを取得する必要があります）
+        $tasks = Task::where('category_id', 3)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
+        $goods = Good::all();
+        $bookmarks = Bookmark::all();
+        // ビューにデータを渡す
+        return view('posts.food')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
+    }
+
+    public function transportation()
+    {
+        // タスクのデータを取得（適切な方法でデータを取得する必要があります）
+        $tasks = Task::where('category_id', 4)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
+        $goods = Good::all();
+        $bookmarks = Bookmark::all();
+        // ビューにデータを渡す
+        return view('posts.transportation')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
     }
     
     public function index()
@@ -38,18 +70,18 @@ class TaskController extends Controller
         $rules = [
             'title' => 'required|max:15',
             'content' => 'required|max:100',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_at' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
          
         $task = new Task;
         $task->title = $request->input('title');
         $task->content = $request->input('content');
+        $task->image_at = $request->input('image_at');
         $task->user_id = auth()->user()->id;
 
-        // return redirect('/tourist-spot')->with('success', 'Post created');
+        return redirect('/tourist-spot')->with('success', 'Post created');
     
-        // 投稿成功後にリダイレクト
-        return redirect()->route('posts.tourist-spot')->with('success', '投稿が作成されました');
+       
     }
 
     public function store(Request $request)
@@ -61,7 +93,7 @@ class TaskController extends Controller
             $rules = [
                 'title' => 'required|max:15',
                 'contents' => 'required|max:100',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image_at' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
             ];
     
             // バリデーション実行
@@ -78,25 +110,158 @@ class TaskController extends Controller
             $task = new Task();
             $task->title = $request->input('title');
             $task->contents = $request->input('contents');
+            $task->image_at = $request->input('image_at');
+            $task->category_id = $request->input('category_id');
             $task->user_id = Auth::id();
 
               // 画像アップロード処理
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->storeAs('public/img', $imageName); // storage/app/public/img ディレクトリに保存
+            if ($request->hasFile('image_at')) {
+                $image_at = $request->file('image_at');
+                $imageName = time() . '_' . $image_at->getClientOriginalName();
+                $image_at->storeAs('public/img', $imageName); // storage/app/public/img ディレクトリに保存
                 $task->image_at = 'storage/img/' . $imageName; // シンボリックリンクを使用してアクセス
             }
             // 保存
             $task->save();
             // 成功時のリダイレクトなどの処理を追加
             return redirect()->route('tourist-spot')->with('success', 'Post created');
-
-         
      }   
     }
+
+    public function storehotel(Request $request)
+    {
+       
+        // ユーザーがログインしているかを確認
+        if (Auth::check()) {
+            // バリデーションルールを定義
+            $rules = [
+                'title' => 'required|max:15',
+                'contents' => 'required|max:100',
+                'image_at' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+            ];
     
-    public function ajaxlike(Request $request)
+            // バリデーション実行
+        $validator = Validator::make($request->all(), $rules);
+
+        // バリデーションが失敗した場合
+        if ($validator->fails()) {
+            return redirect()
+                ->route('hotel') // リダイレクト先を適切に設定
+                ->withErrors($validator) // エラーメッセージをセット
+                ->withInput(); // フォーム入力データをセット
+        }
+            // 新しい投稿を作成
+            $task = new Task();
+            $task->title = $request->input('title');
+            $task->contents = $request->input('contents');
+            $task->image_at = $request->input('image_at');
+            $task->category_id = $request->input('category_id');
+            $task->user_id = Auth::id();
+
+              // 画像アップロード処理
+            if ($request->hasFile('image_at')) {
+                $image_at = $request->file('image_at');
+                $imageName = time() . '_' . $image_at->getClientOriginalName();
+                $image_at->storeAs('public/img', $imageName); // storage/app/public/img ディレクトリに保存
+                $task->image_at = 'storage/img/' . $imageName; // シンボリックリンクを使用してアクセス
+            }
+            // 保存
+            $task->save();
+            // 成功時のリダイレクトなどの処理を追加
+            return redirect()->route('hotel')->with('success', 'Post created');
+     }   
+    }
+
+    public function storeFood(Request $request)
+    {
+       
+        // ユーザーがログインしているかを確認
+        if (Auth::check()) {
+            // バリデーションルールを定義
+            $rules = [
+                'title' => 'required|max:15',
+                'contents' => 'required|max:100',
+                'image_at' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+            ];
+    
+            // バリデーション実行
+        $validator = Validator::make($request->all(), $rules);
+
+        // バリデーションが失敗した場合
+        if ($validator->fails()) {
+            return redirect()
+                ->route('food') // リダイレクト先を適切に設定
+                ->withErrors($validator) // エラーメッセージをセット
+                ->withInput(); // フォーム入力データをセット
+        }
+            // 新しい投稿を作成
+            $task = new Task();
+            $task->title = $request->input('title');
+            $task->contents = $request->input('contents');
+            $task->image_at = $request->input('image_at');
+            $task->category_id = $request->input('category_id');
+            $task->user_id = Auth::id();
+
+              // 画像アップロード処理
+            if ($request->hasFile('image_at')) {
+                $image_at = $request->file('image_at');
+                $imageName = time() . '_' . $image_at->getClientOriginalName();
+                $image_at->storeAs('public/img', $imageName); // storage/app/public/img ディレクトリに保存
+                $task->image_at = 'storage/img/' . $imageName; // シンボリックリンクを使用してアクセス
+            }
+            // 保存
+            $task->save();
+            // 成功時のリダイレクトなどの処理を追加
+            return redirect()->route('food')->with('success', 'Post created');
+     }   
+    }
+
+
+    public function storeTransportation(Request $request)
+    {
+       
+        // ユーザーがログインしているかを確認
+        if (Auth::check()) {
+            // バリデーションルールを定義
+            $rules = [
+                'title' => 'required|max:15',
+                'contents' => 'required|max:100',
+                'image_at' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+            ];
+    
+            // バリデーション実行
+        $validator = Validator::make($request->all(), $rules);
+
+        // バリデーションが失敗した場合
+        if ($validator->fails()) {
+            return redirect()
+                ->route('transportation') // リダイレクト先を適切に設定
+                ->withErrors($validator) // エラーメッセージをセット
+                ->withInput(); // フォーム入力データをセット
+        }
+            // 新しい投稿を作成
+            $task = new Task();
+            $task->title = $request->input('title');
+            $task->contents = $request->input('contents');
+            $task->image_at = $request->input('image_at');
+            $task->category_id = $request->input('category_id');
+            $task->user_id = Auth::id();
+
+              // 画像アップロード処理
+            if ($request->hasFile('image_at')) {
+                $image_at = $request->file('image_at');
+                $imageName = time() . '_' . $image_at->getClientOriginalName();
+                $image_at->storeAs('public/img', $imageName); // storage/app/public/img ディレクトリに保存
+                $task->image_at = 'storage/img/' . $imageName; // シンボリックリンクを使用してアクセス
+            }
+            // 保存
+            $task->save();
+            // 成功時のリダイレクトなどの処理を追加
+            return redirect()->route('transportation')->with('success', 'Post created');
+     }   
+    }
+
+        public function ajaxlike(Request $request)
     {
         // 投稿にいいねを追加する
         $tasks = Task::find($request->id);
@@ -116,14 +281,15 @@ class TaskController extends Controller
     public function edit($id)
 
     {
-        $task = Task::findOrFail($id);
+        $tasks = Task::findOrFail($id);
+        // $tasks = Task::where('user_id', Auth::user()->id)->find($id);
 
         // Check if the post belongs to the authenticated user
         // if ($post->user_id !== Auth::user()->id) {
         //     return redirect()->route('posts.index')->with('error', 'Unauthorized access.');
         // }
 
-        return view('post_list_edit', compact('task'));
+        return view('post_list_edit', compact('tasks'));
         // dd($id);
         // Fetch a single task by its ID
         //$task = Task::find($id); // Replace $taskId with the actual task ID you want to edit
@@ -131,6 +297,8 @@ class TaskController extends Controller
         // $user = Auth::user();
         // return view('post_list_edit', compact('task','user'));
     }
+
+
 
 
     public function update(Request $request, $id)
@@ -179,15 +347,78 @@ class TaskController extends Controller
         //return view('mypage', compact('tasks','user'));
     }
 
- 
     public function destroy($id)
     {
-        // dd($id);
-        // タスクのIDを使用してタスクを取得
-        $task = Task::find($id);
-        // dd($task);
-        $task->delete();
-        // dd($task);
-        return redirect()->route('tasks.index');
+     
+        // dd("delete");
+     $task = Task::find($id);
+     if (!$task) {
+         // タスクが見つからない場合の処理
+         return redirect()->route('tourist-spot')->with('error', 'Posting not found');
+     }
+
+    // 関連するブックマークを削除
+     $task->bookmarks()->delete();
+     // タスクが見つかった場合、削除処理を行う
+     $task->delete();
+     return redirect()->route('tourist-spot')->with('success', 'Post has been deleted');
+
     }
+
+    public function destroyHotel($id)
+    {
+     
+        // dd("delete");
+     $task = Task::find($id);
+     if (!$task) {
+         // タスクが見つからない場合の処理
+         return redirect()->route('hotel')->with('error', 'タスクが見つかりませんでした。');
+     }
+
+    // 関連するブックマークを削除
+     $task->bookmarks()->delete();
+     // タスクが見つかった場合、削除処理を行う
+     $task->delete();
+     return redirect()->route('hotel')->with('success', 'Post has been deleted');
+
+    }
+
+    public function destroyFood($id)
+    {
+     
+        // dd("delete");
+     $task = Task::find($id);
+     if (!$task) {
+         // タスクが見つからない場合の処理
+         return redirect()->route('food')->with('error', 'タスクが見つかりませんでした。');
+     }
+
+    // 関連するブックマークを削除
+     $task->bookmarks()->delete();
+     // タスクが見つかった場合、削除処理を行う
+     $task->delete();
+     return redirect()->route('food')->with('success', 'Post has been deleted');
+
+    }
+
+
+    public function destroyTransportation($id)
+    {
+     
+        // dd("delete");
+     $task = Task::find($id);
+     if (!$task) {
+         // タスクが見つからない場合の処理
+         return redirect()->route('transportation')->with('error', 'Posting not found');
+     }
+
+    // 関連するブックマークを削除
+     $task->bookmarks()->delete();
+     // タスクが見つかった場合、削除処理を行う
+     $task->delete();
+     return redirect()->route('transportation')->with('success', 'Post has been deleted');
+
+    }
+
+
 }

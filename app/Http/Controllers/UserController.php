@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         // dd($id);
         $user = User::find($id);
-        // dd($user);
+        $tasks = Task::all();
         $bookmarks = User::find($id)->bookmarks;
         // dd($bookmarks);
 
@@ -36,10 +36,8 @@ class UserController extends Controller
         }
 
         // dd($user);
-        return view('mypage')->with('user', $user)->with('bookmarks', $bookmarked_post);
+        return view('mypage')->with('user', $user)->with('bookmarks', $bookmarked_post)->with('tasks', $tasks);
 
-        
-        
     }
     
 
