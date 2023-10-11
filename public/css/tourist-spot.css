@@ -162,3 +162,22 @@
     display: none;
 }
 
+.showbtn {
+    font-size: 10px;
+    border: none;
+    color: white;
+    background: blue;
+}
+
+.showbtn:hover {
+    color: blue;
+    background: white;
+}
+
+.modal-content {
+    height: 75vh!important;
+}
+
+.modal-body {
+    overflow-y: scroll!important;
+}

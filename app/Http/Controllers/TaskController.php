@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Task; 
 use App\Models\Good; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
-use Symfony\Component\HttpKernel\Event\RequestEvent
 
 class TaskController extends Controller
 
@@ -19,8 +19,9 @@ class TaskController extends Controller
         // タスクのデータを取得（適切な方法でデータを取得する必要があります）
         $tasks = Task::orderBy('id', 'DESC')->paginate(8);  // 仮の例です
         $goods = Good::all();
+        $comments = Comment::all();
         // ビューにデータを渡す
-        return view('posts.tourist-spot')->with('tasks', $tasks)->with('goods', $goods)->render();
+        return view('posts.tourist-spot')->with('tasks', $tasks)->with('goods', $goods)->with('comments', $comments)->render();
     }
     
     public function index()

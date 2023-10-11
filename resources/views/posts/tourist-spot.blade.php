@@ -59,18 +59,31 @@
             </div>
         </div> 
         <label for="comment" class="form-label">Comment :</label><br>
-        <img src="images/jolli.jpg" class="img-thumbnail" alt="...">
+        @foreach($comments as $comment)
+            @if($comment->task_id == $task->id)
+                <div>{{ $comment->body }}</div>
+            @endif
+        @endforeach
+        <button type="button" class="showbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showAll({{ $task->id }})">
+            Show Comments
+          </button>
+        {{-- <img src="images/jolli.jpg" class="img-thumbnail" alt="..."> --}}
+        
     
         <div class="yahho">
-            <input type="text" class="comment-box" id="comment">
-            <div>
-                <img src="images/plain.png" alt="" width="20px" height="20px">
-            </div>
+            <form action="{{ route('comment.add', ['task_id' => $task->id]) }}" method="POST">
+                @csrf
+                <input type="text" class="comment-box" id="comment" name="comment">
+                <input type="number" class="comment-box" id="task_id" name="task_id" value="{{ $task->id }}" hidden>
+                <div onclick="$(this).closest('form').submit()">
+                    <img src="images/plain.png" alt="" width="20px" height="20px">
+                </div>
+            </form>
         </div>
     </div>
 
-@endforeach
-    </div>
+    @endforeach
+</div>
 
 
 <!-- ページネーションリンクの表示 -->
@@ -106,6 +119,30 @@
     </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="user-comments">
+         <div>
+            <img src="../img/メイン背景画像.png" alt="">
+            <div>コメント</div>
+         </div>
+
+  </div>
+        <div class="modal-body" id="allComments">
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @push('js')
@@ -136,7 +173,7 @@
             }
 
         function like(taskId) {
-            console.log(taskId)
+            // console.log(taskId)
             $.ajax({
                 headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -156,9 +193,22 @@
             })          
         }
 
-        function submitForm() {
-            let form = document.getElementById('bookmarkForm')
-            form.submit();
+        function showAll(taskId) {
+            //  alert(taskId)
+            $.ajax({
+                headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+                url: "task/comments/"+taskId,
+                type: "GET",
+                success: function(res) {
+                    $("#allComments").html(res);
+                    // alert(res)
+                },
+                error: function(res) {
+                    console.log(res)
+                }
+            })  
         }
 
 
