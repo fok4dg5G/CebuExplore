@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         // dd($id);
         $user = User::find($id);
-        $tasks = Task::all();
+        $tasks = Task::all()->where('user_id', $id);
         $bookmarks = User::find($id)->bookmarks;
         // dd($bookmarks);
 

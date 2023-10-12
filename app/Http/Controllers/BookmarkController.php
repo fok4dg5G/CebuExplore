@@ -54,13 +54,14 @@ class BookmarkController extends Controller
     }
 
     // ブックマークを削除
-    public function removeBookmark(Request $request)
+    public function removeBookmark(Request $request, $id)
     {
-        $task_id = $request->input('task_id');
+        // dd($id);
+        // $bookmark_id = $request->input('task_id');
         $user_id = Auth::id();
 
         // ブックマークを削除
-        Bookmark::where('task_id', $task_id)
+        Bookmark::where('task_id', $id)
             ->where('user_id', $user_id)
             ->delete();
 

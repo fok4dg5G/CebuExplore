@@ -51,9 +51,11 @@
             </div>
             <div>
                 @if($task->user->id == Auth::user()->id)
-                    <button type="button" class="btn btn-edit">
-                        <i class="fa-solid fa-file-pen"></i>
-                    </button>
+                    <form action="{{ route('task.edit', ['id' => $task->id]) }}" method="GET">
+                        <button type="submit" class="btn btn-edit">
+                            <i class="fa-solid fa-file-pen"></i>
+                        </button>
+                    </form>
                     <form method="POST" action="{{ route('task.destroy', ['id' => $task->id]) }}">
                         @csrf
                         @method('delete')
@@ -69,17 +71,17 @@
 
 
 <h1 class="text-center my-30">Bookmark  List</h1>
-<div class="container">
+<div class="container custom">
     @if(isset($bookmarks))
     <!-- $bookmarks 変数が存在する場合のコード -->  
     
     @foreach ($bookmarks as $bookmark)
   
-    <div class="card mb-3">
+    <div class="card custom mb-3">
         <div class="card-body">
-            <img src="{{ asset($bookmark->image_at) }}" alt="{{ $bookmark->title }}" width="170px" height="100px">
-            <h5 class="card-title">{{ $bookmark->title }}</h5>
-            <p class="card-text">{{ $bookmark->contents }}</p>
+            <img src="{{ asset($bookmark->image_at) }}" alt="{{ $bookmark->title }}" class="bookmark-img">
+            <h5 class="card-title">Title : {{ $bookmark->title }}</h5>
+            <p class="card-text">Content : {{ $bookmark->contents }}</p>
             <form action="{{ route('bookmarks.remove', ['task_id' => $bookmark->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -89,13 +91,13 @@
                   </svg></button>
             </form>
         </div>
-        @endforeach
+    </div>
+    @endforeach
         @else
             <!-- $bookmarks 変数が存在しない場合のコード -->
             <p>No bookmarks found.</p>
         @endif
         {{-- {{ $bookmarks }} --}}
-    </div>    
 </div>
 @endsection
    

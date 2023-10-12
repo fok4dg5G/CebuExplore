@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Bookmark;
 use App\Models\Task; 
+use App\Models\Comment; 
 use App\Models\Good; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -21,8 +22,9 @@ class TaskController extends Controller
         $tasks = Task::where('category_id', 1)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
         $goods = Good::all();
         $bookmarks = Bookmark::all();
+        $comments = Comment::all();
         // ビューにデータを渡す
-        return view('posts.tourist-spot')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
+        return view('posts.tourist-spot')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->with('comments', $comments)->render();
     }
 
     public function hotel()
@@ -31,8 +33,9 @@ class TaskController extends Controller
         $tasks = Task::where('category_id', 2)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
         $goods = Good::all();
         $bookmarks = Bookmark::all();
+        $comments = Comment::all();
         // ビューにデータを渡す
-        return view('posts.hotel')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
+        return view('posts.hotel')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->with('comments', $comments)->render();
     }
 
     public function food()
@@ -41,8 +44,9 @@ class TaskController extends Controller
         $tasks = Task::where('category_id', 3)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
         $goods = Good::all();
         $bookmarks = Bookmark::all();
+        $comments = Comment::all();
         // ビューにデータを渡す
-        return view('posts.food')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
+        return view('posts.food')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->with('comments', $comments)->render();
     }
 
     public function transportation()
@@ -51,8 +55,9 @@ class TaskController extends Controller
         $tasks = Task::where('category_id', 4)->orderBy('id', 'DESC')->paginate(8);  // 仮の例です
         $goods = Good::all();
         $bookmarks = Bookmark::all();
+        $comments = Comment::all();
         // ビューにデータを渡す
-        return view('posts.transportation')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
+        return view('posts.transportation')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->with('comments', $comments)->render();
     }
     
     public function index()
@@ -281,7 +286,8 @@ class TaskController extends Controller
     public function edit($id)
 
     {
-        $tasks = Task::findOrFail($id);
+        // dd($id);
+        $task = Task::where('id', $id)->first();
         // $tasks = Task::where('user_id', Auth::user()->id)->find($id);
 
         // Check if the post belongs to the authenticated user
@@ -289,7 +295,7 @@ class TaskController extends Controller
         //     return redirect()->route('posts.index')->with('error', 'Unauthorized access.');
         // }
 
-        return view('post_list_edit', compact('tasks'));
+        return view('post_list_edit')->with('task', $task);
         // dd($id);
         // Fetch a single task by its ID
         //$task = Task::find($id); // Replace $taskId with the actual task ID you want to edit
@@ -342,7 +348,7 @@ class TaskController extends Controller
             'contents' => $request->input('contents'),
         ]);
 
-        return redirect()->route('tasks.index')->with('success', 'Post updated successfully.');
+        return redirect()->route('user.show', Auth::id())->with('success', 'Post updated successfully.');
     // }
         //return view('mypage', compact('tasks','user'));
     }
