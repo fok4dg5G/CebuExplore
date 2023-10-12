@@ -19,7 +19,7 @@ class BookmarkController extends Controller
 
 
         // ビューにデータを渡す
-        return view('mypage', compact('bookmarks'));
+        return view('mypage', compact('bookmarks','user_id'));
     }
 
 

@@ -41,6 +41,7 @@
     
 @foreach($tasks as $task)
     @if($task && $task->user)
+
         <div class="self_post">
             <div class="three">
                 <img src="{{ asset($task->image_at) }}" width="90px" height="70px">
@@ -49,6 +50,7 @@
                 <p>Title {{ $task->title }}</p>
                 <p>Content {{ $task->contents }}</p>
             </div>
+
             <div>
                 @if($task->user->id == Auth::user()->id)
                     <button type="button" class="btn btn-edit">
@@ -97,6 +99,7 @@
         {{-- {{ $bookmarks }} --}}
     </div>    
 </div>
+
 @endsection
    
 @push('js')

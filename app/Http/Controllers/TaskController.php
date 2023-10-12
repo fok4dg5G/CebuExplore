@@ -25,6 +25,32 @@ class TaskController extends Controller
         return view('posts.tourist-spot')->with('tasks', $tasks)->with('goods', $goods)->with('bookmarks', $bookmarks)->render();
     }
 
+    public function search(Request $request)
+    {
+        // 検索フォームで入力された値を取得する
+        $search = $request->input('search');
+        // クエリビルダ
+        $query = Task::query();
+        // もし検索フォームにキーワードが入力されたら
+        if ($search) {
+            // 全角スペースを半角に変換
+            $spaceConversion = mb_convert_kana($search, 's');
+            // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            // 単語をループで回し、タイトルと部分一致するものがあれば、$queryとして保持される
+            foreach ($wordArraySearched as $value) {
+                $query->where('title', 'like', '%' . $value . '%');
+            }
+            // 上記で取得した$queryをページネートにし、変数$tasksに代入
+            $tasks = $query->paginate(20);
+        } else {
+            // 検索キーワードが入力されていない場合、通常のタスクリストを取得
+            $tasks = Task::paginate(20);
+        }
+        // ビューにデータを渡す
+        return view('posts.search', compact('tasks', 'search'));
+    }
+
     public function hotel()
     {
         // タスクのデータを取得（適切な方法でデータを取得する必要があります）
@@ -354,14 +380,14 @@ class TaskController extends Controller
      $task = Task::find($id);
      if (!$task) {
          // タスクが見つからない場合の処理
-         return redirect()->route('tourist-spot')->with('error', 'Posting not found');
+         return redirect()->route('mypage.index')->with('error', 'Posting not found');
      }
 
     // 関連するブックマークを削除
      $task->bookmarks()->delete();
      // タスクが見つかった場合、削除処理を行う
      $task->delete();
-     return redirect()->route('tourist-spot')->with('success', 'Post has been deleted');
+     return redirect()->route('mypage.index')->with('success', 'Post has been deleted');
 
     }
 

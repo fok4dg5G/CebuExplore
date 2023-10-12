@@ -32,6 +32,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/search', [App\Http\Controllers\TaskController::class, 'search'])->name('tasks.search');
 // --------------------------------------------------------------------------------------------------------------------------
 
 Route::get('/tourist-spot', [App\Http\Controllers\TaskController::class, 'touristSpot'])->name('tourist-spot');
