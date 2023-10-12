@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/CebuExplore.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/mypage_edit.css') }}">
     <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
 </head>
 <body>
@@ -35,5 +36,10 @@
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        setTimeout(() => {
+            document.querySelector('.alert').style.display = "none"
+        }, 5000);
+    </script>
 </body>
 </html>

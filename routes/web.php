@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 use App\Http\Controllers;
 use App\Models\Category;
@@ -82,9 +83,14 @@ Route::delete('/bookmarks/remove/{task_id}', [App\Http\Controllers\BookmarkContr
 Route::get('/profile/{id}', [App\Http\Controllers\BookmarkController::class, 'index'])->name('mypage.index');
 
 // --------------------------------------------------------------------------------
-Route::post('/post_list/edit/{id}', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
+Route::get('/post_list/edit/{id}', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
 
 Route::put('/post_list/{id}', [App\Http\Controllers\TaskController::class, 'update'])->name('task.update');
 
 Route::delete('/post_list/{id}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('task.destroy');
+Route::post('/task/comment/{task_id}', [CommentController::class, 'store'])->name('comment.add');
+Route::post('/food/comment/{task_id}', [CommentController::class, 'storeFood'])->name('comment.food');
+Route::post('/hotel/comment/{task_id}', [CommentController::class, 'storeHotel'])->name('comment.hotel');
+Route::post('/transpo/comment/{task_id}', [CommentController::class, 'storeTranspo'])->name('comment.transportation');
 
+Route::get('/task/comments/{task_id}', [CommentController::class, 'index'])->name('task.comments');

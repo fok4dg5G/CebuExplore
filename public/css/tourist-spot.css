@@ -166,7 +166,7 @@
 .content-box{
 
     width: 170px;
-    height: 120px;
+    min-height: 50px;
     text-align: left;
 
 }
@@ -214,4 +214,38 @@ footer{
     background-color: white; /* フッターの背景色 */
     color: #fff; /* フッターのテキスト色 */
    
+}
+.container.post {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container.post .posts-posts {
+    width: 48vw;
+}
+
+.container.post .function-box,
+.container.post .yahho{
+    display: block!important;
+}
+
+.commentForm {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modal img {
+    width: 100%;
+}
+img.avatar {
+    width: 30px!important;
+    height: 30px!important;
+    margin-right: 6px;
+}
+.avatar-container {
+    padding: 6px 3px;
+}
+.avatar-container:not(:last-of-type) {
+    border-bottom: 1px solid gray;
 }
