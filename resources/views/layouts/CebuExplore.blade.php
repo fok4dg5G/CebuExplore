@@ -17,14 +17,14 @@
         <div style="display: flex; align-items: center; border solid 1px black">
             <a href="{{ route('welcome') }}"><img src="{{ asset('img/logo.png') }}" style="margin-right: 10px; height: 40px;
             }"></a>
-            <form action="">
-                @csrf
-                <input type="text" class="search aa-b">
-            </form>
-            <a href=""><i class="fa-solid fa-magnifying-glass header-img aa-b" ></i></a>
+           <form method="GET" action="{{ route('tasks.search') }}">
+            <input type="search" placeholder="search" name="search" value="{{ $search ?? '' }}">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+           </form>
+        
             @if (Auth::check())
                 <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}">
-                    <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="" class="self" width="50px" height="50px">
+                    <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="" class="self" width="30px" height="30px" border-radius="50px">
                 </a>
             @else
             <!-- ログインしていないユーザーに対する代替コンテンツをここに追加 -->
