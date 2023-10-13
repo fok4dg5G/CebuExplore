@@ -19,7 +19,7 @@ header{
 .content{
     width: 100vw;
     height: 261px;
-    background-image: url(../img/メイン背景画像.png);
+    background-image: url(../img/Group\ 22\ \(2\).png);
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -33,23 +33,24 @@ header{
 }
 
 .btn-container {
+
     display: flex;
     justify-content: space-evenly;
+    position: relative;
+    top: 100px; /* 下方向に移動 */
+
 }
 
-.btn {
-    padding-left: 30px;
-    width: 100px;
-    height: 25px;
-    font-size: 1.1rem;
-    padding: 8px 5px;
-    border: 1px solid black;
-    display: inline-block;
+.btn1 {
+    width: 80px;
+   
     background-color: white;
+    padding: 8px;
     text-align: center;
     border-radius: 30px;
     text-decoration: none;
     color: black;
+  
 }
 
 .logout_btn{
@@ -66,23 +67,36 @@ header{
 .low{
     height: 225px;
     background-image: url(../img/3104.png);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap:wrap ;
+   
 }
+.low div{
+    width: 50%;
+}
+
+.low2{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+
+}
+
 .btn_low{
     display: inline-block;
     border: 1px solid black;
     text-decoration: none;
     color: black;
     font-family: 'Abhaya Libre', serif;
-    height: 24px;
     width: 102px;
+    padding: 3px;
     font-size: 12px;
     text-align: center;
     border-radius: 30%;
     background-color: white;
     margin-left: 50px;
-    margin-top: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 /* ---------------------------------------------------------------------------- */
 footer{
@@ -101,4 +115,8 @@ footer{
     text-decoration: none;
     color: black;
     border: 0.5px solid black;
+}
+
+.smallimg{
+    width: fit-content;
 }
